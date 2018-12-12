@@ -47,6 +47,7 @@ captures/
 
 # IntelliJ
 *.iml
+.idea/
 .idea/workspace.xml
 .idea/tasks.xml
 .idea/gradle.xml
@@ -77,8 +78,3 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
-
-
-.idea\misc.xml
-.idea\runConfigurations.xml
-.idea\vcs.xml
