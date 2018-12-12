@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.example.minchan.zeus.R;
 
 public class MainActivity extends AppCompatActivity {
-
+    //Zeus
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
