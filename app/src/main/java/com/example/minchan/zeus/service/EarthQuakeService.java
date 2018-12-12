@@ -12,3 +12,4 @@ public class EarthQuakeService extends Service {
         return null;
     }
 }
+// 이거 서비스로 돌리려면 메니페스트에 추가해야함
