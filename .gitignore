@@ -78,6 +78,7 @@ fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
 
+
 .idea\misc.xml
 .idea\runConfigurations.xml
 .idea\vcs.xml
