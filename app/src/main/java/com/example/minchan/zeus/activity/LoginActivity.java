@@ -93,21 +93,18 @@ public class LoginActivity extends AppCompatActivity {
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         firebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // 로그인 성공
-                            Toast.makeText(LoginActivity.this, "Login Success!", Toast.LENGTH_LONG).show();
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // 로그인 성공
+                        Toast.makeText(LoginActivity.this, "Login Success!", Toast.LENGTH_LONG).show();
 
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            // 로그인 실패
-                            Toast.makeText(LoginActivity.this, "Login Failed..", Toast.LENGTH_LONG).show();
-                        }
-
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                    } else {
+                        // 로그인 실패
+                        Toast.makeText(LoginActivity.this, "Login Failed..", Toast.LENGTH_LONG).show();
                     }
+
                 });
     }
 
