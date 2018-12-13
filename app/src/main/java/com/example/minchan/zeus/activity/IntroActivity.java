@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 import com.example.minchan.zeus.R;
 
-public class IntroActivity extends AppCompatActivity implements Runnable{
+public class IntroActivity extends AppCompatActivity{
 
     private ImageView IVlogo = null;
     private Handler handler = null;
@@ -17,16 +17,12 @@ public class IntroActivity extends AppCompatActivity implements Runnable{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
-        IVlogo = findViewById(R.id.IVlogo);
-        handler = new Handler();
-        handler.postDelayed(this, 2000);
-    }
-
-    @Override
-    public void run() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
-        finish();
-        overridePendingTransition(R.anim.face_out, R.anim.face_in);
+       try{
+           Thread.sleep(3000);
+       }catch(Exception e){
+           e.printStackTrace();
+       }
+       Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+       startActivity(intent);
     }
 }
