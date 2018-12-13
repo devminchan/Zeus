@@ -1,4 +1,4 @@
-package com.example.minchan.zeus.view;
+package com.example.minchan.zeus.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
