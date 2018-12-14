@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        picture = (ImageView)findViewById(R.id.weathernow);
-        picture.setImageDrawable(getDrawable(R.drawable.snow));
+        //picture = (ImageView)findViewById(R.id.weathernow);
+        //picture.setImageDrawable(getDrawable(R.drawable.snow));
     }
 }
