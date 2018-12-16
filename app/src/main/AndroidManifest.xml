@@ -9,16 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".activity.MainActivity" />
+        <activity
+            android:name=".activity.IntroActivity"
+            android:label="@string/title_activity_intro"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".service.EarthQuakeService">
-        </service>
-        <service android:name=".service.FireService">
-        </service>
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.FireEvacuActivity"></activity>
     </application>
 
 </manifest>
