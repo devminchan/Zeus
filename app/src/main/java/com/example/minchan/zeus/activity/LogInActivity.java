@@ -1,5 +1,6 @@
 package com.example.minchan.zeus.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
@@ -27,7 +29,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     SignInButton Google_Login;
 
     private static final int RC_SIGN_IN = 1000;
-    private FirebaseAuth gAuth;
+    private FirebaseAuth firebaseAuth;
     private GoogleApiClient mGoogleApiClient;
 
     @Override
@@ -45,11 +47,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
                 .build();
 
-        gAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         Google_Login = findViewById(R.id.btn_googleSignIn);
         Google_Login.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
@@ -75,20 +76,42 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             }
         }
     }
+
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct){
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(),null);
 
-        gAuth.signInWithCredential(credential)
+        firebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-                            Toast.makeText(LoginActivity.this, "Login 인증 실패", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "로그인 인증 실패", Toast.LENGTH_SHORT).show();
                         }else{
-                            Toast.makeText(LoginActivity.this, "Login 인증 성공", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "로그인 인증 성공", Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
                         }
                     }
                 });
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+
+        FirebaseUser user = firebaseAuth.getInstance().getCurrentUser();
+
+        if(user != null){
+            //user가 로그인 되어있는 경우
+            Toast.makeText(LoginActivity.this, "이미 로그인 되었습니다.", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        } else {
+            //user가 로그인 되어있지 않은 경우
+
+        }
     }
 
     @Override
