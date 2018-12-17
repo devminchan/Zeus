@@ -21,12 +21,12 @@ public class TestMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // 추가된 소스, Toolbar를 생성한다.
-        myToolbar = findViewById(R.id.my_toolbar);
+        //myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
         //추가된 소스코드, Toolbar의 왼쪽에 버튼을 추가하고 버튼의 아이콘을 바꾼다.
-        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        this.getSupportActionBar().setHomeAsUpIndicator(R.drawable.menu);
+        //this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //this.getSupportActionBar().setHomeAsUpIndicator(R.drawable.menu);
     }
 
     //추가된 소스, ToolBar에 menu.xml을 인플레이트함
