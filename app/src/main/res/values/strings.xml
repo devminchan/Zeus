@@ -1,9 +1,4 @@
 <resources>
     <string name="app_name">Zeus</string>
     <string name="title_activity_intro">IntroActivity</string>
-
-    <!-- facebook setting -->
-    <string name="facebook_app_id">274497403179335</string>
-    <string name="fb_login_protocol_scheme">fb274497403179335</string>
-
 </resources>
