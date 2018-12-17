@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "560507876984",
+    "firebase_url": "https://zeus-login-398e5.firebaseio.com",
+    "project_id": "zeus-login-398e5",
+    "storage_bucket": "zeus-login-398e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:560507876984:android:913bdec6edf8afe3",
+        "android_client_info": {
+          "package_name": "com.example.minchan.zeus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "560507876984-t2tu994pm0e38aqk6gfe1jlr9nkdpq3q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.minchan.zeus",
+            "certificate_hash": "1ad8e308b32cedad7117d0c9d0f77d04d2661aa9"
+          }
+        },
+        {
+          "client_id": "560507876984-omoe7ss56paim2e11lhqe4gi548aj0h3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkGfcCqPPD4AyS5kh9Ctieakarbc4EKZE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "560507876984-omoe7ss56paim2e11lhqe4gi548aj0h3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
