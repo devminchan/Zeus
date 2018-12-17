@@ -10,17 +10,15 @@
 
     <ImageView
         android:id="@+id/IVlogo"
-        android:layout_width="0dp"
-        android:layout_height="67dp"
+        android:layout_width="607dp"
+        android:layout_height="69dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="75dp"
-        android:layout_marginTop="124dp"
-        android:layout_marginEnd="75dp"
+        android:layout_marginTop="220dp"
+        android:contentDescription="TODO"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo"
-        android:contentDescription="TODO" />
+        app:srcCompat="@drawable/logo" />
 </android.support.constraint.ConstraintLayout>
