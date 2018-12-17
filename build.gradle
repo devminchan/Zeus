@@ -8,6 +8,7 @@ buildscript {
         maven{
             url"https://maven.google.com" // google's maven repository
         }
+        mavenCentral() // facebook
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
