@@ -1,19 +1,20 @@
 package com.example.minchan.zeus.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.minchan.zeus.R;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -21,39 +22,36 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
-    // google login result 상수
-    private static final int RC_SIGN_IN = 900;
-    // google api 클라이언트
-    private GoogleSignInClient googleSignInClient;
-    // firebase 인증 객체 생성
-    private FirebaseAuth firebaseAuth;
-    // google login 버튼
-    private SignInButton buttonGoogle;
+    SignInButton Google_Login;
+
+    private static final int RC_SIGN_IN = 1000;
+    private FirebaseAuth mAuth;
+    private GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // firebase 인증 객체 선언
-        firebaseAuth = FirebaseAuth.getInstance();
-        buttonGoogle = findViewById(R.id.btn_googleSignIn);
-
-        // Google Sign In 설정
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
+                .build();
 
-        googleSignInClient = GoogleSignIn.getClient(this, gso);
+        mAuth = FirebaseAuth.getInstance();
 
-        buttonGoogle.setOnClickListener(new View.OnClickListener() {
+        Google_Login = findViewById(R.id.btn_googleSignIn);
+        Google_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent signInIntent = googleSignInClient.getSignInIntent();
-                startActivityForResult(signInIntent, RC_SIGN_IN);
+                Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+                startActivityForResult(signInIntent,RC_SIGN_IN);
             }
         });
     }
@@ -62,35 +60,37 @@ public class LoginActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // 구글로그인 버튼 응답
         if (requestCode == RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                // 구글 로그인 성공
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
-            } catch (ApiException e) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
 
+            if (result.isSuccess()) {
+                //구글 로그인 성공해서 firebase에 인증
+                GoogleSignInAccount account = result.getSignInAccount();
+                firebaseAuthWithGoogle(account);
+            }
+            else{
+                //구글 로그인 실패
             }
         }
     }
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct){
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(),null);
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-
-        firebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListene  r<AuthResult>() {
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // 로그인 성공
-                            Toast.makeText(LoginActivity.this, "Login 성공!!", Toast.LENGTH_LONG).show();
-                        } else {
-                            // 로그인 실패
-                            Toast.makeText(LoginActivity.this, "Login 실패..", Toast.LENGTH_LONG).show();
+                        if(!task.isSuccessful()){
+                            Toast.makeText(LoginActivity.this, "Login 인증 실패", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(LoginActivity.this, "Login 인증 성공", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
     }
 
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
 }
