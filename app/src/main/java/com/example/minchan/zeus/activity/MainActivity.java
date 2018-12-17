@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         //추가된 소스코드, Toolbar의 왼쪽에 버튼을 추가하고 버튼의 아이콘을 바꾼다.
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //getSupportActionBar().setHomeAsUpIndicator(R.drawable.menu);
+        //picture = (ImageView)findViewById(R.id.weathernow);
+        //picture.setImageDrawable(getDrawable(R.drawable.snow));
     }
     //소스추가
     //추가된 소스, ToolBar에 menu.xml을 인플레이트함
