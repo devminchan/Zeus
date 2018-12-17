@@ -8,12 +8,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.minchan.zeus.R;
-import com.facebook.AccessToken;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -25,20 +19,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
     
     SignInButton Google_Login;
-    LoginButton Facebook_Login;
-
-    private CallbackManager callbackManager;
-    private FirebaseAuth firebaseAuth;
 
     private static final int RC_SIGN_IN = 1000;
-    private FirebaseAuth mAuth;
+    private FirebaseAuth gAuth;
     private GoogleApiClient mGoogleApiClient;
 
     @Override
@@ -55,35 +44,15 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
                 .build();
 
-        mAuth = FirebaseAuth.getInstance();
+        gAuth = FirebaseAuth.getInstance();
 
         Google_Login = findViewById(R.id.btn_googleSignIn);
         Google_Login.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
                 startActivityForResult(signInIntent,RC_SIGN_IN);
-            }
-        });
-
-        callbackManager = CallbackManager.Factory.create();
-
-        Facebook_Login = findViewById(R.id.btn_facebookLogin);
-        Facebook_Login.setReadPermissions("email", "public_profile");
-        Facebook_Login.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                handleFacebookAccessToken(loginResult.getAccessToken());
-            }
-
-            @Override
-            public void onCancel() {
-
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-
             }
         });
     }
@@ -91,8 +60,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        callbackManager.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
@@ -110,7 +77,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct){
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(),null);
 
-        mAuth.signInWithCredential(credential)
+        gAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -128,25 +95,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     }
 
-    private void handleFacebookAccessToken(AccessToken token) {
-
-        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
-        firebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // 로그인 성공
-                            Toast.makeText(LoginActivity.this, "Login 인증 성공", Toast.LENGTH_SHORT).show();
-                        } else {
-                            // 로그인 실패
-                            Toast.makeText(LoginActivity.this, "Login 인증 실패", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
-
     // hashkey 얻는 문장. terminal에서 실행
     //keytool -exportcert -alias androiddebugkey -keystore "C:\Users\ImJunhyuk\.android\debug.keystore" | "C:\openssl-0.9.8k_X64\bin\openssl" sha1 -binary | "C:\openssl-0.9.8k_X64\bin\openssl" base64
-
 }

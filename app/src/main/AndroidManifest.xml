@@ -17,7 +17,7 @@
         <!-- android:label="@string/title_activity_intro" -->
         <!-- android:theme="@style/AppTheme.NoActionBar" -->
         <activity
-            android:name=".activity.TestMainActivity"
+            android:name=".activity.LoginActivity"
             android:label="@string/title_activity_intro"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -27,7 +27,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.FireEvacuActivity" />
-        <activity android:name=".activity.LoginActivity" />
 
         <!-- facebook setting -->
         <meta-data
