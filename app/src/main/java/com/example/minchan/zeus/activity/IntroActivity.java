@@ -8,6 +8,8 @@ import android.widget.ImageView;
 
 import com.example.minchan.zeus.R;
 
+//import com.example.minchan.zeus.R;
+
 public class IntroActivity extends AppCompatActivity{
 
     private ImageView IVlogo = null;

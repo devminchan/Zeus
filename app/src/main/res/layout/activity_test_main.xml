@@ -116,7 +116,7 @@
         app:layout_constraintEnd_toEndOf="@+id/viewDust"
         app:layout_constraintStart_toStartOf="@+id/viewDust"
         app:layout_constraintTop_toTopOf="@+id/viewDust"
-        app:srcCompat="@drawable/Dust" />
+        app:srcCompat="@drawable/dust" />
 
     <View
         android:id="@+id/viewDust"
