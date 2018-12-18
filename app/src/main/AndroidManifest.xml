@@ -7,24 +7,28 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_foreground"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_foreground"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity" />
-        <!-- android:name=".activity.IntroActivity" -->
-        <!-- android:label="@string/title_activity_intro" -->
-        <!-- android:theme="@style/AppTheme.NoActionBar" -->
+
+        <activity android:name=".activity.MainActivity"/>
+
         <activity
-            android:name=".activity.LoginActivity"
-            android:label="@string/title_activity_intro"
+            android:name=".activity.IntroActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <!-- android:label="@string/title_activity_intro" -->
+        <activity
+            android:name=".activity.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 
