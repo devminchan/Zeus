@@ -25,11 +25,15 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
-    
+
+    //google signin 버튼
     SignInButton Google_Login;
 
+    //google login result 상수
     private static final int RC_SIGN_IN = 1000;
+    //firebase 인증 객체 생성
     private FirebaseAuth firebaseAuth;
+    //google api 클라이언트
     private GoogleApiClient mGoogleApiClient;
 
     @Override
@@ -37,6 +41,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //firebase 인증 객체 선언
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        //google login 을 앱에 통합.
+        //GoogleSignInOptions 개체를 구성할 때 resultIdToKen을 호출
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -46,8 +55,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
                 .build();
-
-        firebaseAuth = FirebaseAuth.getInstance();
 
         Google_Login = findViewById(R.id.btn_googleSignIn);
         Google_Login.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +70,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        //google login버튼 응답
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
 
@@ -77,6 +85,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         }
     }
 
+    //사용자가 정상적으로 로그인 한 후, GoogleSignInAccount 개체에서 ID토큰을 가져옴,
+    //firebase 사용자 인증 정보로 교환 후, firebase 사용자 인증 정보를 사용해 firebase 에 인증.
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct){
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(),null);
 
