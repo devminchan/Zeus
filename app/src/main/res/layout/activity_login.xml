@@ -6,7 +6,7 @@
     style="@style/AppTheme.NoActionBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6274ff"
+    android:background="#6274FF"
     tools:context=".activity.LoginActivity"
     tools:layout_editor_absoluteY="25dp">
 
@@ -40,15 +40,12 @@
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/btn_googleSignIn"
-        android:layout_width="385dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="116dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
-
 </android.support.constraint.ConstraintLayout>
