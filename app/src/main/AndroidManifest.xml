@@ -14,21 +14,14 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".activity.MainActivity"/>
-
         <activity
-            android:name=".activity.IntroActivity"
+            android:name=".activity.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- android:label="@string/title_activity_intro" -->
-        <activity
-            android:name=".activity.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 
