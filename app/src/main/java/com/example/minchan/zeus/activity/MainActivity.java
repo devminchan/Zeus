@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
@@ -21,7 +22,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     // 추가된 소스
     private Toolbar tbMain;
-    private ListView lvMainDrawer;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
 
@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 (view) -> {
                     mDrawerLayout.openDrawer(GravityCompat.START);
                 });
+        tbMain.setOverflowIcon(getDrawable(R.drawable.ic_notifications_black_24dp));
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.string.open, R.string.close) {
@@ -62,6 +63,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
     public void onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             mDrawerLayout.closeDrawer(GravityCompat.START);
@@ -70,12 +78,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.first: {
-                Toast.makeText(this, "수지니 사랑행!!", Toast.LENGTH_SHORT).show();
                 break;
             }
             case R.id.second: {
@@ -85,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
             case R.id.third: {
-                Intent intent = new Intent(MainActivity.this, EarthQuakeService.class);
+                Intent intent = new Intent(MainActivity.this, EarthInfoActivity.class);
                 startActivity(intent);
                 finish();
                 break;
