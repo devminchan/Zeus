@@ -51,6 +51,12 @@
             android:label="@string/title_activity_earth_info"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.EarthInfoActivity"/>
+        <activity android:name=".activity.NotifyActivity"
+                android:theme="@style/Theme.AppCompat.Dialog"/>
+
+        <service android:name=".service.EarthQuakeService"/>
+        <service android:name=".service.EmergencyNotificationService"/>
+        <service android:name=".service.FireService"/>
     </application>
 
 </manifest>
