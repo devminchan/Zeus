@@ -43,7 +43,7 @@
             android:layout_marginStart="128dp"
             android:layout_marginTop="32dp"
             android:text="지진대피요령"
-            android:textColor="@android:color/white"
+            android:textColor="#DEDDFF"
             android:textSize="26sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -68,29 +68,30 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/imageView13"
+                        android:id="@+id/iVInfo1"
                         android:layout_width="307dp"
                         android:layout_height="293dp"
                         android:layout_weight="1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/cloudsun" />
+                        app:srcCompat="@drawable/fire_speak" />
 
                     <TextView
-                        android:id="@+id/textView13"
+                        android:id="@+id/txtInfo1"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="87dp"
                         android:layout_marginTop="8dp"
                         android:layout_weight="1"
-                        android:text="Ex) 1. 구름뒤로 숨기"
-                        android:textColor="@android:color/darker_gray"
+                        android:text="'불이야!' 외친 후 \n 화제경보벨 누르기"
+                        android:textAlignment="center"
+                        android:textColor="#DEDDFF"
                         android:textSize="30sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView13" />
+                        app:layout_constraintTop_toBottomOf="@+id/iVInfo1" />
                 </android.support.constraint.ConstraintLayout>
 
                 <android.support.constraint.ConstraintLayout
@@ -98,29 +99,30 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/imageView14"
+                        android:id="@+id/iVInfo2"
                         android:layout_width="307dp"
                         android:layout_height="293dp"
                         android:layout_weight="1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/cloudsun" />
+                        app:srcCompat="@drawable/fire_exit" />
 
                     <TextView
-                        android:id="@+id/textView14"
+                        android:id="@+id/txtInfo2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_weight="1"
-                        android:text="Ex) 1. 구름뒤로 숨기"
-                        android:textColor="@android:color/darker_gray"
+                        android:text="계단사용, 출구혹은 \n 옥상으로 대피"
+                        android:textAlignment="center"
+                        android:textColor="#DEDDFF"
                         android:textSize="30sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+                        app:layout_constraintTop_toBottomOf="@+id/iVInfo2" />
                 </android.support.constraint.ConstraintLayout>
 
                 <android.support.constraint.ConstraintLayout
@@ -128,29 +130,30 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/imageView15"
+                        android:id="@+id/iVInfo3"
                         android:layout_width="307dp"
                         android:layout_height="293dp"
                         android:layout_weight="1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/cloudsun" />
+                        app:srcCompat="@drawable/fire_towel" />
 
                     <TextView
-                        android:id="@+id/textView15"
+                        android:id="@+id/txtInfo3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_weight="1"
-                        android:text="Ex) 1. 구름뒤로 숨기"
-                        android:textColor="@android:color/darker_gray"
+                        android:text="적신담요, 수건으로 \n 코,입 막기"
+                        android:textAlignment="center"
+                        android:textColor="#DEDDFF"
                         android:textSize="30sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+                        app:layout_constraintTop_toBottomOf="@+id/iVInfo3" />
                 </android.support.constraint.ConstraintLayout>
             </LinearLayout>
         </HorizontalScrollView>
@@ -160,7 +163,7 @@
             android:layout_width="259dp"
             android:layout_height="1dp"
             android:layout_marginTop="8dp"
-            android:background="#0000ff"
+            android:background="#9EB8FF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
