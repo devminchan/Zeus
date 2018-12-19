@@ -26,7 +26,7 @@ public class NotifyActivity extends AppCompatActivity {
 
         Intent i = getIntent();
 
-        switch (i.getAction())
+        switch (i.getStringExtra("SITUATION"))
         {
             case Actions.FIRE:
                 title.setText("화재대피방법");

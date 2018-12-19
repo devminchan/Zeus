@@ -11,6 +11,7 @@ import android.hardware.SensorManager;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.minchan.zeus.R;
@@ -48,11 +49,10 @@ public class EarthQuakeService extends Service implements SensorEventListener, R
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         runForeground(startId);
+        Log.e("LOG", EarthQuakeService.this.getClass().getName() + " Started");
 
         if (mSensorManager != null && mAccSensor != null) {
             mSensorManager.registerListener(this, mAccSensor, SensorManager.SENSOR_DELAY_UI);
-        } else {
-            Toast.makeText(getApplicationContext(), "EarthQuakeService doesn't run", Toast.LENGTH_SHORT).show();
         }
 
         return super.onStartCommand(intent, flags, startId);
@@ -68,6 +68,7 @@ public class EarthQuakeService extends Service implements SensorEventListener, R
                 .setContentText("")
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .build();
+
         nm.notify(startId, notification);
         nm.cancel(startId);
     }

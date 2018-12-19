@@ -10,8 +10,11 @@ import android.content.IntentFilter;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 
 import com.example.minchan.zeus.R;
+import com.example.minchan.zeus.activity.FireEvacuActivity;
+import com.example.minchan.zeus.activity.NotifyActivity;
 
 public class EmergencyNotificationService extends Service {
 
@@ -37,14 +40,13 @@ public class EmergencyNotificationService extends Service {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String action = intent.getAction();
-
-                Intent i = new Intent();
-                i.setAction(action);
-                displayNotification(i);
+                displayNotification(action);
             }
 
-            public void displayNotification(Intent intent)
+            public void displayNotification(String actionName)
             {
+                Intent intent = new Intent(getApplicationContext(), NotifyActivity.class);
+                intent.putExtra("SITUATION", actionName);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
@@ -53,6 +55,8 @@ public class EmergencyNotificationService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.e("LOG", EmergencyNotificationService.this.getClass().getName() + " Started");
+
         runForeground(startId);
 
         IntentFilter filter = new IntentFilter();
