@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.minchan.zeus.R;
+import com.example.minchan.zeus.service.EarthQuakeService;
+import com.example.minchan.zeus.service.EmergencyNotificationService;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -124,6 +127,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             //user가 로그인 되어있지 않은 경우
             
         }
+
+        startService(new Intent(LoginActivity.this, EmergencyNotificationService.class));
+        startService(new Intent(LoginActivity.this, EarthQuakeService.class));
     }
 
     @Override
