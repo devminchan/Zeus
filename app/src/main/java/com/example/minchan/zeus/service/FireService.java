@@ -32,6 +32,7 @@ public class FireService extends Service implements SensorEventListener {
     private float[] m_result_data = new float[9];
 
     @Nullable
+
     @Override
     public IBinder onBind(Intent intent) {
         mSensorManager.registerListener(this, mAccSensor, SensorManager.SENSOR_DELAY_UI);
