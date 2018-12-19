@@ -77,12 +77,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 //구글 로그인 성공해서 firebase에 인증
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
-            }
-            else{
+            } else{
                 //구글 로그인 실패
             }
         }
     }
+
 
     //사용자가 정상적으로 로그인 한 후, GoogleSignInAccount 개체에서 ID토큰을 가져옴,
     //firebase 사용자 인증 정보로 교환 후, firebase 사용자 인증 정보를 사용해 firebase 에 인증.
@@ -97,9 +97,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                             Toast.makeText(LoginActivity.this, "로그인 인증 실패", Toast.LENGTH_SHORT).show();
                         }else{
                             Toast.makeText(LoginActivity.this, "로그인 인증 성공", Toast.LENGTH_SHORT).show();
-
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
+                            finish();
                         }
                     }
                 });
@@ -114,9 +114,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         if(user != null){
             //user가 로그인 되어있는 경우
             Toast.makeText(LoginActivity.this, "이미 로그인 되었습니다.", Toast.LENGTH_SHORT).show();
-
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
+            finish();
         } else {
             //user가 로그인 되어있지 않은 경우
             
@@ -125,7 +125,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
     }
 
     // hashkey 얻는 문장. terminal에서 실행
