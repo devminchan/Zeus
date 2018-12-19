@@ -79,6 +79,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 firebaseAuthWithGoogle(account);
             } else{
                 //구글 로그인 실패
+                //Toast.makeText(LoginActivity.this, "로그인 인증 실패", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "에러코드"+result.getStatus().getStatusCode(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(LoginActivity.this, "에러메세지"+result.getStatus().getStatusMessage(), Toast.LENGTH_SHORT).show();
             }
         }
     }

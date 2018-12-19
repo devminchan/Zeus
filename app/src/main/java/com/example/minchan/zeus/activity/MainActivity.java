@@ -12,11 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.minchan.zeus.R;
-import com.example.minchan.zeus.service.EarthQuakeService;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -28,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_main);
+        setContentView(R.layout.activity_main);
 
         // 추가된 소스, Toolbar를 생성한다.
         tbMain = findViewById(R.id.tb_main);

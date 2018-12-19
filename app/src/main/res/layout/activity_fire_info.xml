@@ -44,7 +44,7 @@
             android:layout_marginTop="32dp"
             android:text="화재대피요령"
             android:textColor="#DEDDFF"
-            android:textSize="26sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tbMain" />
@@ -155,6 +155,38 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/iVInfo3" />
                 </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iVInfo4"
+                        android:layout_width="307dp"
+                        android:layout_height="293dp"
+                        android:layout_weight="1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/fire_low" />
+
+                    <TextView
+                        android:id="@+id/txtInfo4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:text="낮은 자세로 \n 이동"
+                        android:textAlignment="center"
+                        android:textColor="#DEDDFF"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iVInfo4" />
+                </android.support.constraint.ConstraintLayout>
+
             </LinearLayout>
         </HorizontalScrollView>
 

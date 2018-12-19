@@ -44,7 +44,7 @@
             android:layout_marginTop="32dp"
             android:text="지진대피요령"
             android:textColor="#DEDDFF"
-            android:textSize="26sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tbMain" />
@@ -75,7 +75,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/fire_speak" />
+                        app:srcCompat="@drawable/earth_donotexit" />
 
                     <TextView
                         android:id="@+id/txtInfo1"
@@ -83,7 +83,7 @@
                         android:layout_height="87dp"
                         android:layout_marginTop="8dp"
                         android:layout_weight="1"
-                        android:text="'불이야!' 외친 후 \n 화제경보벨 누르기"
+                        android:text="여진 위험으로 \n 밖으로 이동X"
                         android:textAlignment="center"
                         android:textColor="#DEDDFF"
                         android:textSize="30sp"
@@ -106,7 +106,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/fire_exit" />
+                        app:srcCompat="@drawable/earth_cushion" />
 
                     <TextView
                         android:id="@+id/txtInfo2"
@@ -114,7 +114,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_weight="1"
-                        android:text="계단사용, 출구혹은 \n 옥상으로 대피"
+                        android:text="머리보호 \n (방석)"
                         android:textAlignment="center"
                         android:textColor="#DEDDFF"
                         android:textSize="30sp"
@@ -137,7 +137,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/fire_towel" />
+                        app:srcCompat="@drawable/exit" />
 
                     <TextView
                         android:id="@+id/txtInfo3"
@@ -145,7 +145,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_weight="1"
-                        android:text="적신담요, 수건으로 \n 코,입 막기"
+                        android:text="여진후 밖으로! \n +비상용품"
                         android:textAlignment="center"
                         android:textColor="#DEDDFF"
                         android:textSize="30sp"
