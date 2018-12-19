@@ -120,7 +120,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             startActivity(intent);
         } else {
             //user가 로그인 되어있지 않은 경우
-
+            
         }
     }
 

@@ -21,7 +21,7 @@ public class IntroActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
-        IVlogo = (ImageView)findViewById(R.id.IVlogo);
+        //IVlogo = (ImageView)findViewById(R.id.IVlogo);
 
         try{
             //3초간 정지
