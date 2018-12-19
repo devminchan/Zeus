@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
-    
+
     SignInButton Google_Login;
 
     private static final int RC_SIGN_IN = 1000;
@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         Google_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
                 startActivityForResult(signInIntent,RC_SIGN_IN);
             }

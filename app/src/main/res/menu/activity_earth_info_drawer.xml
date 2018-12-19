@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/first"
+            android:icon="@drawable/thunder"
+            android:title="Zeus" />
+    </group>
+
+    <item android:title="Escape Tips">
+        <menu>
+            <item
+                android:id="@+id/second"
+                android:icon="@drawable/fire"
+                android:title="화재대피요령" />
+            <item
+                android:id="@+id/third"
+                android:icon="@drawable/earthquake"
+                android:title="지진대피요령" />
+        </menu>
+    </item>
+
+</menu>

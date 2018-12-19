@@ -1,59 +1,96 @@
 package com.example.minchan.zeus.activity;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.minchan.zeus.R;
+import com.example.minchan.zeus.service.EarthQuakeService;
 
-public class MainActivity extends AppCompatActivity {
-    //Zeus
-    private ImageView picture;
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    // 추가된 소스
+    private Toolbar tbMain;
+    private ListView lvMainDrawer;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_test_main);
 
-        picture = (ImageView)findViewById(R.id.weathernow);
-        picture.setImageDrawable(getDrawable(R.drawable.snow));
+        // 추가된 소스, Toolbar를 생성한다.
+        tbMain = findViewById(R.id.tb_main);
+        mDrawerLayout = findViewById(R.id.dlMain);
+        tbMain.setTitle("");
 
-        //추가된 소스코드, Toolbar의 왼쪽에 버튼을 추가하고 버튼의 아이콘을 바꾼다.
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //getSupportActionBar().setHomeAsUpIndicator(R.drawable.menu);
-        //picture = (ImageView)findViewById(R.id.weathernow);
-        //picture.setImageDrawable(getDrawable(R.drawable.snow));
+        // 왼쪽에 툴바 추가하는 코드 wkadh
+        tbMain.setNavigationIcon(R.drawable.menu);
+        setSupportActionBar(tbMain);
+        tbMain.setNavigationOnClickListener(
+                (view) -> {
+                    mDrawerLayout.openDrawer(GravityCompat.START);
+                });
+
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+                R.string.open, R.string.close) {
+
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+                invalidateOptionsMenu();
+            }
+
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                invalidateOptionsMenu();
+            }
+        };
+
+        mDrawerToggle.syncState();
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
-    //소스추가
-    //추가된 소스, ToolBar에 menu.xml을 인플레이트함
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        //return super.onCreateOptionsMenu(menu);
-//        MenuInflater menuInflater = getMenuInflater();
-//        menuInflater.inflate(R.menu.menu, menu);
-//        return true;
-//    }
-//
-//    //추가된 소스, ToolBar에 추가된 항목의 select 이벤트를 처리하는 함수
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        //return super.onOptionsItemSelected(item);
-//        switch (item.getItemId()) {
-//            case R.id.action_settings:
-//                // User chose the "Settings" item, show the app settings UI...
-//                Toast.makeText(getApplicationContext(), "환경설정 버튼 클릭됨", Toast.LENGTH_LONG).show();
-//                return true;
-//
-//            default:
-//                // If we got here, the user's action was not recognized.
-//                // Invoke the superclass to handle it.
-//                Toast.makeText(getApplicationContext(), "나머지 버튼 클릭됨", Toast.LENGTH_LONG).show();
-//                return super.onOptionsItemSelected(item);
-//
-//        }
-//    }
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.first: {
+                Toast.makeText(this, "수지니 사랑행!!", Toast.LENGTH_SHORT).show();
+                break;
+            }
+            case R.id.second: {
+                Intent intent = new Intent(MainActivity.this, FireInfoActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            }
+            case R.id.third: {
+                Intent intent = new Intent(MainActivity.this, EarthQuakeService.class);
+                startActivity(intent);
+                finish();
+                break;
+            }
+        }
+        return false;
+    }
 }
